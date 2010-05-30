@@ -5383,6 +5383,9 @@ static struct cftype memory_files[] = {
 };
 
 struct cgroup_subsys memory_cgrp_subsys = {
+#ifdef CONFIG_MEMCG_DISABLED
+	.disabled = 1,
+#endif
 	.css_alloc = mem_cgroup_css_alloc,
 	.css_online = mem_cgroup_css_online,
 	.css_offline = mem_cgroup_css_offline,
